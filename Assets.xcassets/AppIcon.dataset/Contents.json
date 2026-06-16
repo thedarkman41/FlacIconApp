@@ -1,6 +1,7 @@
 {
-  "colors" : [
+  "data" : [
     {
+      "filename" : "flac_icon_app_dock_icon 1.svg",
       "idiom" : "universal"
     }
   ],

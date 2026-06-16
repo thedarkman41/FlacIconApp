@@ -6,17 +6,23 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CD7E353C2FE0D16E00908599 /* IconSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7E353B2FE0D16C00908599 /* IconSetter.swift */; };
+		CD7E353E2FE0D18100908599 /* FlacIconProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7E353D2FE0D17C00908599 /* FlacIconProcessor.swift */; };
+		CD7E35402FE0D19200908599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7E353F2FE0D18E00908599 /* AppDelegate.swift */; };
+		CD7E35442FE0E7F300908599 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7E35432FE0E7E800908599 /* main.swift */; };
+		CD7E35492FE1205A00908599 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD7E35482FE1205A00908599 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CD7E352A2FE0D03000908599 /* FlacIconApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlacIconApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD7E353B2FE0D16C00908599 /* IconSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSetter.swift; sourceTree = "<group>"; };
+		CD7E353D2FE0D17C00908599 /* FlacIconProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlacIconProcessor.swift; sourceTree = "<group>"; };
+		CD7E353F2FE0D18E00908599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CD7E35432FE0E7E800908599 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		CD7E35452FE11B8800908599 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = FlacIconApp/Info.plist; sourceTree = "<group>"; };
+		CD7E35482FE1205A00908599 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		CD7E352C2FE0D03000908599 /* FlacIconApp */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FlacIconApp;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CD7E35272FE0D03000908599 /* Frameworks */ = {
@@ -32,7 +38,12 @@
 		CD7E35212FE0D03000908599 = {
 			isa = PBXGroup;
 			children = (
-				CD7E352C2FE0D03000908599 /* FlacIconApp */,
+				CD7E35452FE11B8800908599 /* Info.plist */,
+				CD7E353B2FE0D16C00908599 /* IconSetter.swift */,
+				CD7E35482FE1205A00908599 /* Assets.xcassets */,
+				CD7E353D2FE0D17C00908599 /* FlacIconProcessor.swift */,
+				CD7E353F2FE0D18E00908599 /* AppDelegate.swift */,
+				CD7E35432FE0E7E800908599 /* main.swift */,
 				CD7E352B2FE0D03000908599 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,9 +70,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				CD7E352C2FE0D03000908599 /* FlacIconApp */,
 			);
 			name = FlacIconApp;
 			packageProductDependencies = (
@@ -109,6 +117,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD7E35492FE1205A00908599 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +128,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD7E35402FE0D19200908599 /* AppDelegate.swift in Sources */,
+				CD7E35442FE0E7F300908599 /* main.swift in Sources */,
+				CD7E353E2FE0D18100908599 /* FlacIconProcessor.swift in Sources */,
+				CD7E353C2FE0D16E00908599 /* IconSetter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,14 +261,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
+				ENABLE_APP_SANDBOX = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_FILE = FlacIconApp/Info.plist;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "FlacIconApp needs to read the Finder selection to apply album art icons to your selected folders.";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -279,14 +292,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
+				ENABLE_APP_SANDBOX = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_FILE = FlacIconApp/Info.plist;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "FlacIconApp needs to read the Finder selection to apply album art icons to your selected folders.";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
