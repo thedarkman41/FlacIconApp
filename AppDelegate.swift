@@ -63,48 +63,74 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         if folders.isEmpty {
-            notify(title: "No folders selected",
-                   text: "Select one or more folders in Finder, then try again.")
-            return
-        }
+                    notify(title: "No folders selected",
+                           text: "Select one or more folders in Finder, then try again.")
+                    return
+                }
 
-        for folder in folders {
-            runProcessing(on: folder)
-        }
+                // Pass the array instead of looping here
+                runProcessing(on: folders)
     }
 
     @objc func chooseFolder() {
-        let panel = NSOpenPanel()
-        panel.canChooseDirectories = true
-        panel.canChooseFiles = false
-        panel.allowsMultipleSelection = true        // now allows multiple
-        panel.prompt = "Apply Icons"
-        if panel.runModal() == .OK {
-            for url in panel.urls {
-                runProcessing(on: url.path)
+            let panel = NSOpenPanel()
+            panel.canChooseDirectories = true
+            panel.canChooseFiles = false
+            panel.allowsMultipleSelection = true        // now allows multiple[cite: 1]
+            panel.prompt = "Apply Icons"
+            if panel.runModal() == .OK {
+                // Map the URLs to paths and pass the array
+                let paths = panel.urls.map { $0.path }
+                runProcessing(on: paths)
             }
         }
-    }
 
-    func runProcessing(on path: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let result = FlacIconProcessor.process(baseDir: path) { _ in }
-            DispatchQueue.main.async {
-                self.showSummary(result, path: path)
+    func runProcessing(on paths: [String]) {
+            DispatchQueue.global(qos: .userInitiated).async {
+                // Track total results across all folders
+                var totalProcessed = 0
+                var totalFailed = 0
+                var totalFoldersWithoutArt = 0
+                var totalEmbeddedFromFolder = 0
+
+                for path in paths {
+                    // Process sequentially
+                    let result = FlacIconProcessor.process(baseDir: path) { _ in }
+                    
+                    // Add this folder's results to the grand totals
+                    totalProcessed += result.processed
+                    totalFailed += result.failed
+                    totalFoldersWithoutArt += result.foldersWithoutArt.count
+                    totalEmbeddedFromFolder += result.embeddedFromFolder
+                }
+
+                // Once the loop is entirely finished, show the summary on the main thread
+                DispatchQueue.main.async {
+                    self.showSummary(foldersCount: paths.count,
+                                     processed: totalProcessed,
+                                     failed: totalFailed,
+                                     noArt: totalFoldersWithoutArt,
+                                     embeddedFromFolder: totalEmbeddedFromFolder)
+                }
             }
         }
-    }
 
-    func showSummary(_ result: ProcessResult, path: String) {
-        let alert = NSAlert()
-        alert.messageText = "Finished applying icons"
-        var info = "Folder: \(path)\n\n✅ Processed: \(result.processed)\n❌ Failed: \(result.failed)"
-        if !result.foldersWithoutArt.isEmpty {
-            info += "\n⚠️  Folders with no artwork: \(result.foldersWithoutArt.count)"
+    func showSummary(foldersCount: Int, processed: Int, failed: Int, noArt: Int, embeddedFromFolder: Int) {
+            let alert = NSAlert()
+            alert.messageText = "Finished applying icons"
+            
+            var info = "Folders Scanned: \(foldersCount)\n\n✅ Total Processed: \(processed)\n❌ Total Failed: \(failed)"
+            
+            if embeddedFromFolder > 0 {
+                info += "\n📀 Folder art embedded into FLAC metadata: \(embeddedFromFolder)"
+            }
+            if noArt > 0 {
+                info += "\n⚠️  Folders with no artwork: \(noArt)"
+            }
+            
+            alert.informativeText = info
+            alert.runModal()
         }
-        alert.informativeText = info
-        alert.runModal()
-    }
 
     func notify(title: String, text: String) {
         let alert = NSAlert()

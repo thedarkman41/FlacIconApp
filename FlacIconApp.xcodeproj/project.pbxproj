@@ -12,6 +12,7 @@
 		CD7E35402FE0D19200908599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7E353F2FE0D18E00908599 /* AppDelegate.swift */; };
 		CD7E35442FE0E7F300908599 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7E35432FE0E7E800908599 /* main.swift */; };
 		CD7E35492FE1205A00908599 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD7E35482FE1205A00908599 /* Assets.xcassets */; };
+		CDD458672FE5D111003F9F59 /* FlacArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD458662FE5D10A003F9F59 /* FlacArt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CD7E35432FE0E7E800908599 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CD7E35452FE11B8800908599 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = FlacIconApp/Info.plist; sourceTree = "<group>"; };
 		CD7E35482FE1205A00908599 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CDD458662FE5D10A003F9F59 /* FlacArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlacArt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 		CD7E35212FE0D03000908599 = {
 			isa = PBXGroup;
 			children = (
+				CDD458662FE5D10A003F9F59 /* FlacArt.swift */,
 				CD7E35452FE11B8800908599 /* Info.plist */,
 				CD7E353B2FE0D16C00908599 /* IconSetter.swift */,
 				CD7E35482FE1205A00908599 /* Assets.xcassets */,
@@ -130,6 +133,7 @@
 			files = (
 				CD7E35402FE0D19200908599 /* AppDelegate.swift in Sources */,
 				CD7E35442FE0E7F300908599 /* main.swift in Sources */,
+				CDD458672FE5D111003F9F59 /* FlacArt.swift in Sources */,
 				CD7E353E2FE0D18100908599 /* FlacIconProcessor.swift in Sources */,
 				CD7E353C2FE0D16E00908599 /* IconSetter.swift in Sources */,
 			);
