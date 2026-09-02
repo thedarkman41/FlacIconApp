@@ -1,0 +1,4 @@
+
+# Per-developer Xcode state: never belongs in a shared repo.
+**/xcuserdata/
+.DS_Store
